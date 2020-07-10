@@ -86,9 +86,13 @@
           eksctl create cluster -f awscluster.yml
           
   <img src="c.png">
+  
+  CloudFormation
+  
   <img src="cloudformation.png">
           
-  Instances Created
+  Instances Created by the Cluster
+  
   <img src="cluster-instances.png">
    
   
