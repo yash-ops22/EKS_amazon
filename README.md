@@ -5,6 +5,7 @@
  scaling, and management. It was originally designed
  by Google and is now maintained by the Cloud Native
  Computing Foundation.
+ <img src="eks-k8s.png">
 
 # Elastic Kuberntets Service
    Amazon Elastic Kubernetes Service (Amazon EKS) is
@@ -19,6 +20,7 @@
    Amazon EKS automatically detects and replaces unhealthy 
    control plane instances, and it provides automated version 
    upgrades and patching for them.
+   <img src="amazon-eks.jpg">
    
    # Drupal
     
@@ -72,6 +74,12 @@
   Creating cluster with command 
   
           eksctl create cluster -f awscluster.yml
+          
+  <img src="c.png">
+  <img src="cloudformation.png">
+          
+  Instances Created
+  <img src="cluster-instances.png">
    
    YAML file of our cluster
    
@@ -244,4 +252,18 @@
                persistentVolumeClaim:
                  claimName: drupal-pvc
    
-   
+ Kustomization file 
+                     
+                     apiVersion: kustomize.config.k8s.io/v1beta1
+                     kind: Kustomization
+                     resources:
+                       - drupal.yml
+                       - dr-sql.yml
+                
+ Launching the Kustomization with command
+       
+            kubectl apply -k .
+<img src="drupal-apply.png">
+
+Drupal web is ready
+<img src="drupal-web.png">
