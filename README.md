@@ -1,10 +1,13 @@
 # EKS_amazon: 
+
 # Kubernetes
  Kubernetes is an open-source container-orchestration
  system for automating computer application deployment, 
  scaling, and management. It was originally designed
  by Google and is now maintained by the Cloud Native
  Computing Foundation.
+ 
+ 
  <img src="eks-k8s.png">
 
 # Elastic Kuberntets Service
@@ -20,7 +23,9 @@
    Amazon EKS automatically detects and replaces unhealthy 
    control plane instances, and it provides automated version 
    upgrades and patching for them.
-   <img src="amazon-eks.jpg">
+ 
+ 
+ <img src="amazon-eks.jpg">
    
    # Drupal
     
@@ -29,21 +34,25 @@
    General Public License. Drupal provides a back-end
    framework for at least 2.3% of all websites worldwide 
    – ranging from personal blogs to corporate, political,
-   and government sites
+   and government sites.
    
-   # Starting with the task
+   <img src="eks-drupal.jpg">
    
-   # IAM 
+   Starting with the task
    
-   First we have to create IAM user which I have already created.
+ 
    
    #  Key Pairs
    
    Creating key pairs for using in our instances.
    
+   <img src="key-pairs.png">
+   
    # AWS Configure
    
    Configuring aws profile in from our command line.
+   
+   <img src="config.png">
    
    
    # EKS Cluster
