@@ -149,6 +149,97 @@
                persistentVolumeClaim:
                  claimName: drupal-pvc-db
    
-   Then launching our drupal.
+   Drupal Code
+   
+        ---
+     apiVersion: v1
+     kind: Service
+     metadata:
+       name: drupal 
+       labels:
+         app: drupal
+     spec:
+       ports:  
+         - port: 80
+           name: web   
+           protocol: TCP
+           targetPort: 80
+       selector:
+         app: drupal
+         tier: frontend
+       type: LoadBalancer
+     ---
+     apiVersion: v1   
+     kind: PersistentVolumeClaim
+     metadata:
+       name: drupal-pvc
+       labels:
+         app: drupal
+     spec:
+       accessModes:
+       - ReadWriteOnce
+       resources:
+         requests:
+           storage: 2Gi
+     ---
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: drupal
+       labels:
+         app: drupal
+         tier: frontend
+     spec:
+       selector:
+         matchLabels:
+           app: drupal
+           tier: frontend
+       strategy:
+         type: Recreate
+       template:
+         metadata:
+           labels:
+             app: drupal
+             tier: frontend
+         spec:
+           initContainers:
+             - name: init-sites-volume
+               image: drupal:8.6.15-apache
+               command: ['/bin/bash', '-c']
+               args: ['cp -r /var/www/html/sites /data; chown www-data:www-data /data/ -R']
+               volumeMounts:
+               - mountPath: /data
+                 name: drupal-pvc
+           containers:
+           - image: drupal:8.6.15-apache
+             imagePullPolicy: IfNotPresent
+             name: drupal
+             env:
+             - name: DRUPAL_DATABASE_HOST
+               value: drup-al
+             - name: DRUPAL_DATABASE_PASSWORD
+               value: yash1234
+            
+             ports:
+             - containerPort: 80
+               name: drupal
+             volumeMounts:
+             - name: drupal-pvc
+               mountPath: /var/www/html/modules
+               subPath: modules
+             - name: drupal-pvc
+               mountPath: /var/www/html/profiles
+               subPath: profiles
+             - name: drupal-pvc
+               mountPath: /var/www/html/sites
+               subPath: sites
+             - name: drupal-pvc
+               mountPath: /var/www/html/themes
+               subPath: themes
+       
+           volumes:
+             - name: drupal-pvc
+               persistentVolumeClaim:
+                 claimName: drupal-pvc
    
    
