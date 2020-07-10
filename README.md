@@ -87,9 +87,8 @@
           
   <img src="c.png">
   
-  CloudFormation
-  
-  <img src="cloudformation.png">
+  Cluster Launched by us.
+  <img src="web-cluster.png">
           
   Instances Created by the Cluster
   
