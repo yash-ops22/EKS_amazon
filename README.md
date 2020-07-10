@@ -45,9 +45,33 @@
    
    
    # EKS Cluster
-   
-   Creating our Amazon EKS cluster.
    For this we have to configure eksctl, official command of AWS EKS.
+   
+  Launching our eks cluster on amazon cloud.
+  
+      apiVersion: eksctl.io/v1alpha5
+      kind: ClusterConfig
+
+      metadata:
+        name: eks-cluster
+        region: ap-south-1
+
+      nodeGroups:
+      - name: firstnodegroup
+        desiredCapacity: 3
+        instanceType: t2.micro
+        ssh:
+          publicKeyName: ekscloudkey22
+
+     - name: secondng
+       desiredCapacity: 3
+       instanceType: t2.micro
+       ssh:
+         publicKeyName: ekscloudkey22
+  
+  Creating cluster with command 
+  
+          eksctl create cluster -f awscluster.yml
    
    YAML file of our cluster
    
