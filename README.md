@@ -79,75 +79,77 @@
    
    Here we are launching drupal with mysql database.
    we have to create a YAML file for our mysql database.
-      ---   
-     apiVersion: v1
-     kind: Service
-     metadata:
-       name: drupal-db
-       labels:
-         app: drupal
-     spec:
-       ports:
-         - port: 3306
-       selector:
-         app: drupal
-         tier: backend
-     ---
-     apiVersion: v1
-     kind: PersistentVolumeClaim
-     metadata:
-       name: drupal-pvc-db
-     spec:
-       accessModes:
-       - ReadWriteOnce
-       resources:
-         requests:
-           storage: 2Gi  
-     ---
-     apiVersion: apps/v1 
-     kind: Deployment
-     metadata:
-       name: drupal-mysql
-       labels:
-         app: drupal        
-     spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: drupal
-           tier: backend
-       strategy:
-         type: Recreate
-       template:
-         metadata:
-           labels:
-             app: drupal
-             tier: backend
-         spec:
-           containers:
-           - image: mysql:5.7
-             imagePullPolicy: IfNotPresent
-             name: mysql
-             env:
-             - name: MYSQL_DATABASE
-               value: drup-al
-             - name: MYSQL_USER
-               value: yash
-             - name: MYSQL_PASSWORD
-               value: yash1234
-             - name: MYSQL_ROOT_PASSWORD
-               value: rootpassword
+      
+      
+        ---   
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: drupal-db
+          labels:
+            app: drupal
+        spec:
+          ports:
+            - port: 3306
+          selector:
+            app: drupal
+            tier: backend
+        ---
+        apiVersion: v1
+        kind: PersistentVolumeClaim
+        metadata:
+          name: drupal-pvc-db
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 2Gi  
+        ---
+        apiVersion: apps/v1 
+        kind: Deployment
+        metadata:
+          name: drupal-mysql
+          labels:
+            app: drupal        
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: drupal
+              tier: backend
+          strategy:
+            type: Recreate
+          template:
+            metadata:
+              labels:
+                app: drupal
+                tier: backend
+            spec:
+              containers:
+              - image: mysql:5.7
+                imagePullPolicy: IfNotPresent
+                name: mysql
+                env:
+                - name: MYSQL_DATABASE
+                  value: drup-al
+                - name: MYSQL_USER
+                  value: yash
+                - name: MYSQL_PASSWORD
+                  value: yash1234
+                - name: MYSQL_ROOT_PASSWORD
+                  value: rootpassword
               
-             ports:
-             - containerPort: 3306
-               name: mysql
-             volumeMounts:
-             - name: mysql-stateful-storage
-               mountPath: /var/lib/mysql
-           volumes:
-             - name: mysql-stateful-storage
-               persistentVolumeClaim:
-                 claimName: drupal-pvc-db
+                ports:
+                - containerPort: 3306
+                  name: mysql
+                volumeMounts:
+                - name: mysql-stateful-storage
+                  mountPath: /var/lib/mysql
+              volumes:
+                - name: mysql-stateful-storage
+                  persistentVolumeClaim:
+                    claimName: drupal-pvc-db
    
    Drupal Code
    
