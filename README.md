@@ -59,6 +59,7 @@
    For this we have to configure eksctl, official command of AWS EKS.
    
   Launching our eks cluster on amazon cloud.
+  YAML file of our cluster
   
       apiVersion: eksctl.io/v1alpha5
       kind: ClusterConfig
@@ -90,7 +91,7 @@
   Instances Created
   <img src="cluster-instances.png">
    
-   YAML file of our cluster
+  
    
    # DRUPAL with MY-SQL
    
