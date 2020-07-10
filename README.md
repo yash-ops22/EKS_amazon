@@ -1,4 +1,4 @@
-# EKS_amazon: 
+# Amazon Elastic Kubernetes Service: 
 
 # Kubernetes
  Kubernetes is an open-source container-orchestration
@@ -42,20 +42,20 @@
    
  
    
-   #  Key Pairs
+   # * Key Pairs
    
    Creating key pairs for using in our instances.
    
    <img src="key-pairs.png">
    
-   # AWS Configure
+   # * AWS Configure
    
    Configuring aws profile in from our command line.
    
    <img src="config.png">
    
    
-   # EKS Cluster
+   # * EKS Cluster
    For this we have to configure eksctl, official command of AWS EKS.
    
   Launching our eks cluster on amazon cloud.
@@ -97,7 +97,7 @@
    
   
    
-   # DRUPAL with MY-SQL
+   # * DRUPAL with MY-SQL
    
    Here we are launching drupal with mysql database.
    we have to create a YAML file for our mysql database.
@@ -173,7 +173,7 @@
                   persistentVolumeClaim:
                     claimName: drupal-pvc-db
    
-   Drupal Code
+   Drupal  YAML Code
    
         ---
      apiVersion: v1
@@ -266,7 +266,7 @@
                persistentVolumeClaim:
                  claimName: drupal-pvc
    
- Kustomization file 
+ Kustomization file:
                      
                      apiVersion: kustomize.config.k8s.io/v1beta1
                      kind: Kustomization
@@ -277,7 +277,9 @@
  Launching the Kustomization with command
        
             kubectl apply -k .
+
 <img src="drupal-apply.png">
 
-Drupal web is ready
+Drupal WebPage
+
 <img src="drupal-web.png">
