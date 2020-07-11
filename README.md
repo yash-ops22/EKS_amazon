@@ -85,7 +85,13 @@
   
           eksctl create cluster -f awscluster.yml
           
-  <img src="c.png">
+         <img src="c.png">
+
+ Making changes in kubeconfig files.  
+           
+
+
+           aws eks update-kubeconfig --name eks-cluster
   
   Cluster Launched by us.
   <img src="web-cluster.png">
