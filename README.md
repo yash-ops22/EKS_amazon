@@ -85,7 +85,7 @@
   
           eksctl create cluster -f awscluster.yml
           
-         <img src="c.png">
+ <img src="c.png">
 
  Making changes in kubeconfig files.  
            
