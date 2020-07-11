@@ -39,7 +39,13 @@
    <img src="eks-drupal.jpg">
    
    Starting with the task
-   
+
+  Firstly we have to configure these before
+  starting:
+  1.AWS CLI
+  2.kubectl
+  3.eksctl
+  4.creating IAM user
  
    
    # * Key Pairs
