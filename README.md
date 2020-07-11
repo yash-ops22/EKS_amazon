@@ -92,7 +92,7 @@
   
   Creating cluster with command 
   
-          eksctl create cluster -f awscluster.yml
+      eksctl create cluster -f awscluster.yml
           
  <img src="c.png">
 
@@ -100,7 +100,7 @@
            
 
 
-           aws eks update-kubeconfig --name eks-cluster
+      aws eks update-kubeconfig --name eks-cluster
   
   Cluster Launched by us.
   <img src="web-cluster.png">
@@ -187,7 +187,7 @@
                   persistentVolumeClaim:
                     claimName: drupal-pvc-db
    
-   Drupal  YAML Code
+   Drupal  YAML File
    
         ---
      apiVersion: v1
@@ -282,11 +282,11 @@
    
  Kustomization file:
                      
-                     apiVersion: kustomize.config.k8s.io/v1beta1
-                     kind: Kustomization
-                     resources:
-                       - drupal.yml
-                       - dr-sql.yml
+               apiVersion: kustomize.config.k8s.io/v1beta1
+               kind: Kustomization
+                 resources:
+                   - drupal.yml
+                   - dr-sql.yml
                 
  Launching the Kustomization with command
        
@@ -297,3 +297,5 @@
 Drupal WebPage
 
 <img src="drupal-web.png">
+
+ Thank You for Reading!!
