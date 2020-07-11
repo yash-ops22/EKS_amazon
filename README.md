@@ -39,7 +39,7 @@
    <img src="eks-drupal.jpg">
    
        
-   Starting with the task
+   # Starting with the task
 
    Firstly we have to configure these before
    starting:     
