@@ -59,7 +59,7 @@
    
    # * AWS Configure
    
-   Configuring aws profile in from our command line.
+   Configuring aws profile from our command line.
    
    <img src="config.png">
    
